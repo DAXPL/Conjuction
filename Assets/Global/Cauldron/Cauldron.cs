@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Cauldron : MonoBehaviour
 {
-    [SerializeField] private RecipePart[] recipe;
+    [SerializeField] private List< RecipePart> recipe = new();
     [SerializeField] private UnityEvent onIngredientAdded;
     [SerializeField] private UnityEvent onRecipeComplete;
     private bool boiled = false;
@@ -32,7 +32,7 @@ public class Cauldron : MonoBehaviour
             onIngredientAdded.Invoke();
             audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
-            for (int i = 0; i < recipe.Length; i++)
+            for (int i = 0; i < recipe.Count; i++)
             {
                 if (recipe[i].ingredientName == ing.ingredientName)
                 {
@@ -52,18 +52,18 @@ public class Cauldron : MonoBehaviour
     }
     private void UpdateRecipe()
     {
-        for (int i = 0; i < recipe.Length; i++)
+        for (int i = 0; i < recipe.Count; i++)
         {
-            if (recipe[i].amount < 0)
-            {
-                recipe[i].amount = 0;
-            }
+
+            if (recipe[i].amount == 0)
+                recipe.RemoveAt(i);
+                
             if(recipe[i].text)recipe[i].text.SetText($"{recipe[i].amount}");
         }
     }
     private bool IsComplete()
     {
-        for (int i = 0; i < recipe.Length; i++)
+        for (int i = 0; i < recipe.Count; i++)
         {
             if (recipe[i].amount > 0)
             {
