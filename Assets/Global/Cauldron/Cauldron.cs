@@ -8,9 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class Cauldron : MonoBehaviour
 {
-    [SerializeField] private List< RecipePart> recipe = new();
+    [SerializeField] private List<RecipePart> recipe = new();
     [SerializeField] private UnityEvent onIngredientAdded;
     [SerializeField] private UnityEvent onRecipeComplete;
+    [SerializeField] private UnityEvent onWrongIngridientAdded;
     private bool boiled = false;
 
     [SerializeField] private AudioClip[] waterClips;
@@ -36,9 +37,11 @@ public class Cauldron : MonoBehaviour
             audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
-            if (recipe[0].ingredientName == ing.ingredientName) {
-                recipe[0].amount--;
+            if (recipe[0].ingredientName != ing.ingredientName) {
+                onWrongIngridientAdded?.Invoke();
+                return;
             }
+            recipe[0].amount--;
 
             Destroy(other.gameObject);
             if(!boiled && IsComplete())
