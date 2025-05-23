@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
@@ -9,9 +10,11 @@ using UnityEngine.SceneManagement;
 public class Cauldron : MonoBehaviour
 {
     [SerializeField] private List<RecipePart> recipe = new();
+    [SerializeField] private BoxCollider cauldronWater;
     [SerializeField] private UnityEvent onIngredientAdded;
     [SerializeField] private UnityEvent onRecipeComplete;
     [SerializeField] private UnityEvent onWrongIngridientAdded;
+    private List<RecipePart> startRecipe = new();
     private bool boiled = false;
 
     [SerializeField] private AudioClip[] waterClips;
@@ -27,6 +30,9 @@ public class Cauldron : MonoBehaviour
         {
             SetIngriedientAmountText(i);
         }
+
+        startRecipe = recipe;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,6 +45,7 @@ public class Cauldron : MonoBehaviour
 
             if (recipe[0].ingredientName != ing.ingredientName) {
                 onWrongIngridientAdded?.Invoke();
+                StartCoroutine(RestartRecipe());
                 return;
             }
             recipe[0].amount--;
@@ -65,6 +72,15 @@ public class Cauldron : MonoBehaviour
     private void SetIngriedientAmountText(int i) {
         if (recipe[i].text)
             recipe[i].text.SetText($"{recipe[i].amount}");
+    }
+
+    private IEnumerator RestartRecipe() {
+        cauldronWater.enabled = true;
+
+        yield return new WaitForSeconds(5);
+
+        recipe = startRecipe;
+        cauldronWater.enabled = false;
     }
 
     private bool IsComplete()
