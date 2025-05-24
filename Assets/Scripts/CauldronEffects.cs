@@ -1,13 +1,20 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CauldronEffects : MonoBehaviour {
 
     public void WrongIngredientEffect(GameObject water) {
-        if (water.TryGetComponent(out MeshRenderer mR)) {
-            List<Material> materials = new(mR.materials);
+        StartCoroutine(ChangeWaterColor(water));
+    }
 
-            materials[0].color = Color.red;
+    private IEnumerator ChangeWaterColor(GameObject water) {
+        if (water.TryGetComponent(out MeshRenderer mR)) {
+            Color startingColor = mR.materials[0].color;
+
+            mR.materials[0].color = Color.red;
+            yield return new WaitForSeconds(2);
+            mR.materials[0].color = startingColor;
         }
     }
 }
