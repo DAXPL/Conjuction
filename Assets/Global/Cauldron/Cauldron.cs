@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -14,10 +12,12 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private UnityEvent onIngredientAdded;
     [SerializeField] private UnityEvent onRecipeComplete;
     [SerializeField] private UnityEvent onWrongIngridientAdded;
+    [SerializeField] private UnityEvent onGoodIngridientAdded;
     private List<RecipePart> startRecipe = new();
     private bool boiled = false;
-
     [SerializeField] private AudioClip[] waterClips;
+    [SerializeField] private AudioClip badIngridientAddedSound;
+
     private AudioSource audioSource;
 
     private void Awake()
@@ -39,6 +39,7 @@ public class Cauldron : MonoBehaviour
     {
         if (other.TryGetComponent<Ingredient>(out Ingredient ing))
         {
+            Destroy(other.gameObject);
             onIngredientAdded.Invoke();
             audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
@@ -46,11 +47,15 @@ public class Cauldron : MonoBehaviour
             if (recipe[0].ingredientName != ing.ingredientName) {
                 onWrongIngridientAdded?.Invoke();
                 StartCoroutine(RestartRecipe());
+                if (badIngridientAddedSound)
+                    audioSource.PlayOneShot(badIngridientAddedSound);
+
                 return;
             }
+
             recipe[0].amount--;
 
-            Destroy(other.gameObject);
+            onGoodIngridientAdded?.Invoke();
             if(!boiled && IsComplete())
             {
                 onRecipeComplete.Invoke();
