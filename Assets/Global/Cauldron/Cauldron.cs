@@ -84,7 +84,7 @@ public class Cauldron : MonoBehaviour
     private IEnumerator RestartRecipe() {
         cauldronWater.enabled = true;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
 
         recipe = startRecipe;
         cauldronWater.enabled = false;
