@@ -5308,6 +5308,12 @@ MonoBehaviour:
   waterClips:
   - {fileID: 8300000, guid: 5fb880e2eaeeec14ba05d0719968d924, type: 3}
   - {fileID: 8300000, guid: ab3c6c7d764b72d42b8f0a422ee64cca, type: 3}
+  badIngredientAddedClips:
+  - {fileID: 8300000, guid: 352593554ecb07745a6eda4b6fd6393a, type: 3}
+  - {fileID: 8300000, guid: 741ac96a81b18034999255d7874e093f, type: 3}
+  - {fileID: 8300000, guid: 648a018a75fd9e94f8d45d53eb48c6ee, type: 3}
+  - {fileID: 8300000, guid: 16b637ec5bd460e4d963f3e3efb218da, type: 3}
+  - {fileID: 8300000, guid: 2e77072b852f09c4b94b23a38836a61d, type: 3}
 --- !u!82 &4216346954711126487
 AudioSource:
   m_ObjectHideFlags: 0

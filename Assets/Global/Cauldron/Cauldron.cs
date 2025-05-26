@@ -16,7 +16,7 @@ public class Cauldron : MonoBehaviour
     private List<RecipePart> startRecipe = new();
     private bool boiled = false;
     [SerializeField] private AudioClip[] waterClips;
-    [SerializeField] private AudioClip badIngridientAddedSound;
+    [SerializeField] private AudioClip[] badIngredientAddedClips;
 
     private AudioSource audioSource;
 
@@ -48,9 +48,12 @@ public class Cauldron : MonoBehaviour
         if (recipe[0].ingredientName != ing.ingredientName) {
             onWrongIngridientAdded?.Invoke();
             StartCoroutine(RestartRecipe());
-            if (badIngridientAddedSound)
-                audioSource.PlayOneShot(badIngridientAddedSound);
 
+            if (badIngredientAddedClips.Length == 0)
+                return;
+
+            int randomClipIndex = UnityEngine.Random.Range(0, badIngredientAddedClips.Length);
+            audioSource.PlayOneShot(badIngredientAddedClips[randomClipIndex]);
             return;
         }
 
