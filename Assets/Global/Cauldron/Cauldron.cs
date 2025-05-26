@@ -37,34 +37,33 @@ public class Cauldron : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Ingredient>(out Ingredient ing))
-        {
-            Destroy(other.gameObject);
-            onIngredientAdded.Invoke();
-            audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
-            audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
+        if (!other.TryGetComponent<Ingredient>(out Ingredient ing))
+            return;
 
-            if (recipe[0].ingredientName != ing.ingredientName) {
-                onWrongIngridientAdded?.Invoke();
-                StartCoroutine(RestartRecipe());
-                if (badIngridientAddedSound)
-                    audioSource.PlayOneShot(badIngridientAddedSound);
+        Destroy(other.gameObject);
+        onIngredientAdded.Invoke();
+        audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
-                return;
-            }
+        if (recipe[0].ingredientName != ing.ingredientName) {
+            onWrongIngridientAdded?.Invoke();
+            StartCoroutine(RestartRecipe());
+            if (badIngridientAddedSound)
+                audioSource.PlayOneShot(badIngridientAddedSound);
 
-            recipe[0].amount--;
-
-            onGoodIngridientAdded?.Invoke();
-            if(!boiled && IsComplete())
-            {
-                onRecipeComplete.Invoke();
-                boiled = true;
-                Debug.Log("Recipe complete!");
-            }
-            UpdateRecipe();
+            return;
         }
-        
+
+        recipe[0].amount--;
+
+        onGoodIngridientAdded?.Invoke();
+        if (!boiled && IsComplete()) {
+            onRecipeComplete.Invoke();
+            boiled = true;
+            Debug.Log("Recipe complete!");
+        }
+
+        UpdateRecipe();
     }
     private void UpdateRecipe()
     {

@@ -7,13 +7,15 @@ public class CauldronEffects : MonoBehaviour {
         StartCoroutine(ChangeWaterColor(water));
     }
 
-    private IEnumerator ChangeWaterColor(GameObject water) {
-        if (water.TryGetComponent(out MeshRenderer mR)) {
-            Color startingColor = mR.materials[0].color;
+    private static IEnumerator ChangeWaterColor(GameObject water) {
+        if (!water.TryGetComponent(out MeshRenderer mR))
+            yield return null;
 
-            mR.materials[0].color = Color.red;
-            yield return new WaitForSeconds(2);
-            mR.materials[0].color = startingColor;
-        }
+        var startingColor = mR.materials[0].color;
+
+        mR.materials[0].color = Color.red;
+        yield return new WaitForSeconds(2);
+        mR.materials[0].color = startingColor;
+
     }
 }
