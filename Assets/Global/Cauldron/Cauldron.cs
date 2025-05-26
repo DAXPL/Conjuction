@@ -11,8 +11,8 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private BoxCollider cauldronWater;
     [SerializeField] private UnityEvent onIngredientAdded;
     [SerializeField] private UnityEvent onRecipeComplete;
-    [SerializeField] private UnityEvent onWrongIngridientAdded;
-    [SerializeField] private UnityEvent onGoodIngridientAdded;
+    [SerializeField] private UnityEvent onWrongIngredientAdded;
+    [SerializeField] private UnityEvent onGoodIngredientAdded;
     private List<RecipePart> startRecipe = new();
     private bool boiled = false;
     [SerializeField] private AudioClip[] waterClips;
@@ -28,7 +28,7 @@ public class Cauldron : MonoBehaviour
     {
         for (int i = 0; i < recipe.Count; i++)
         {
-            SetIngriedientAmountText(i);
+            SetIngredientAmountText(i);
         }
 
         startRecipe = recipe;
@@ -46,7 +46,7 @@ public class Cauldron : MonoBehaviour
         audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
         if (recipe[0].ingredientName != ing.ingredientName) {
-            onWrongIngridientAdded?.Invoke();
+            onWrongIngredientAdded?.Invoke();
             StartCoroutine(RestartRecipe());
 
             if (badIngredientAddedClips.Length == 0)
@@ -59,7 +59,7 @@ public class Cauldron : MonoBehaviour
 
         recipe[0].amount--;
 
-        onGoodIngridientAdded?.Invoke();
+        onGoodIngredientAdded?.Invoke();
         if (!boiled && IsComplete()) {
             onRecipeComplete.Invoke();
             boiled = true;
@@ -70,13 +70,13 @@ public class Cauldron : MonoBehaviour
     }
     private void UpdateRecipe()
     {
-        SetIngriedientAmountText(0);
+        SetIngredientAmountText(0);
 
         if (recipe[0].amount == 0)
             recipe.RemoveAt(0);
     }
 
-    private void SetIngriedientAmountText(int i) {
+    private void SetIngredientAmountText(int i) {
         if (recipe[i].text)
             recipe[i].text.SetText($"{recipe[i].amount}");
     }
