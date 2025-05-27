@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piecesOnCut: 0
+  requiredHitCount: 0
   ingredientName: 
 --- !u!54 &-5679036372938506084
 Rigidbody:

@@ -10,6 +10,10 @@ public class Cutter : MonoBehaviour {
         if (i.GetPiecesOnCut() == 0)
             return;
 
+        i.IncreaseHitCount();
+        if (i.GetHitCount() != i.GetRequiredHitCount())
+            return;
+
         CreateCutPieces(i.GetPiecesOnCut(), i);
         Destroy(collision.gameObject);
     }
