@@ -19,8 +19,7 @@ public class Cutter : MonoBehaviour {
     }
 
     private void CreateCutPieces(int piecesOnCut, Ingredient ingredient) {
-        var originalIngredient = ingredient.gameObject;
-        var materials = GetMaterials(originalIngredient);
+        var materials = ingredient.GetPiecesOnCutMaterial();
 
         for (int i = 0; i < piecesOnCut; i++) {
             GameObject piece = Instantiate(cutPiecePrefab);
@@ -28,22 +27,28 @@ public class Cutter : MonoBehaviour {
             if (piece.TryGetComponent(out Ingredient cutIngredient))
                 cutIngredient.ingredientName = ingredient.ingredientName;
 
-
             if (!piece.TryGetComponent(out Renderer r))
                 return;
 
-            if (materials.Length == 1) {
-                r.material = materials[0];
-                return;
+            if (materials.Length == 0)
+                continue;
+
+            var materialIndex = 0;
+            switch (materials.Length) {
+                case 1:
+                    break;
+
+                default:
+                    materialIndex = Mathf.Min(i, materials.Length - 1);
+
+                    if (materials.Length > ingredient.GetPiecesOnCut()) {
+                        materialIndex = Random.Range(0, materials.Length - 1);
+                    }
+
+                    break;
             }
 
-            r.material = materials[i];
-
+            r.material = materials[materialIndex];
         }
-    }
-
-    private static Material[] GetMaterials(GameObject obj) {
-        var meshRenderer = obj.GetComponentInChildren<MeshRenderer>();
-        return meshRenderer.materials;
     }
 }

@@ -123,6 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d99464c8e424eb6eb444f1106784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  piecesOnCut: 2
+  piecesOnCutMaterial:
+  - {fileID: 2100000, guid: 8bd373f8cb0552349a58bba99218e302, type: 2}
+  requiredHitCount: 3
   ingredientName: Berries
 --- !u!54 &4742377365716675412
 Rigidbody:
