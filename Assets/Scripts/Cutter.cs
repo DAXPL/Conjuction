@@ -22,7 +22,7 @@ public class Cutter : MonoBehaviour {
         var materials = ingredient.GetPiecesOnCutMaterial();
 
         for (int i = 0; i < piecesOnCut; i++) {
-            GameObject piece = Instantiate(cutPiecePrefab);
+            GameObject piece = Instantiate(cutPiecePrefab, ingredient.transform.localPosition, Quaternion.identity);
 
             if (piece.TryGetComponent(out Ingredient cutIngredient))
                 cutIngredient.ingredientName = ingredient.ingredientName;
