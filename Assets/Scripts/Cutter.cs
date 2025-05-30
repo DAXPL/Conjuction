@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,9 +8,14 @@ public class Cutter : MonoBehaviour {
     [SerializeField] private AudioClip[] piecesPopOutSound;
     [SerializeField] private AudioClip[] cutSound;
     private AudioSource audioSource;
+    private Vector3 cutPiecesSpawnOffset;
 
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start() {
+        cutPiecesSpawnOffset = new Vector3(0, 0, 0);
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -32,12 +38,16 @@ public class Cutter : MonoBehaviour {
 
     private void CreateCutPieces(int piecesOnCut, Ingredient ingredient) {
         var materials = ingredient.GetPiecesOnCutMaterial();
+        var spawnPos = ingredient.transform.localPosition;
 
         for (int i = 0; i < piecesOnCut; i++) {
+            cutPiecesSpawnOffset.x = Random.Range(-0.05f, 0.05f);
+            cutPiecesSpawnOffset.z = Random.Range(-0.05f, 0.05f);
+
             if (piecesPopOutSound.Length != 0)
                 PlaySound(piecesPopOutSound);
 
-            GameObject piece = Instantiate(cutPiecePrefab, ingredient.transform.localPosition, Quaternion.identity);
+            GameObject piece = Instantiate(cutPiecePrefab, spawnPos + (cutPiecesSpawnOffset * i), Quaternion.identity);
 
             if (piece.TryGetComponent(out Ingredient cutIngredient))
                 cutIngredient.ingredientName = ingredient.ingredientName;
