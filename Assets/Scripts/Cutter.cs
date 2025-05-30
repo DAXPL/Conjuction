@@ -64,12 +64,12 @@ public class Cutter : MonoBehaviour {
                     break;
 
                 default:
-                    materialIndex = Mathf.Min(i, materials.Length - 1);
-
-                    if (materials.Length > ingredient.GetPiecesOnCut()) {
-                        materialIndex = Random.Range(0, materials.Length - 1);
+                    if (materials.Length != ingredient.GetPiecesOnCut()) {
+                        materialIndex = Random.Range(0, materials.Length);
+                        break;
                     }
 
+                    materialIndex = Mathf.Min(i, materials.Length - 1);
                     break;
             }
 
