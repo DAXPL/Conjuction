@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cauldron
       objectReference: {fileID: 0}
+    - target: {fileID: 8312433906459934259, guid: 12dba4fbf17b3b846bd1f12b151e0de7, type: 3}
+      propertyPath: fireplace
+      value: 
+      objectReference: {fileID: 5795615626311993925}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -295,6 +299,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f7f7a2980e495947bdacd070929e24f, type: 3}
+--- !u!114 &5795615626311993925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1242317102154354778, guid: 5f7f7a2980e495947bdacd070929e24f, type: 3}
+  m_PrefabInstance: {fileID: 4707301087735585311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bc7c5c4ad0e7548b3b9d302470361e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6112135449224838587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1549550157833725860, guid: 5f7f7a2980e495947bdacd070929e24f, type: 3}

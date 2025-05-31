@@ -13,6 +13,7 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private UnityEvent onRecipeComplete;
     [SerializeField] private UnityEvent onWrongIngredientAdded;
     [SerializeField] private UnityEvent onGoodIngredientAdded;
+    [SerializeField] private Fireplace fireplace;
     private List<RecipePart> startRecipe = new();
     private bool boiled = false;
     [SerializeField] private AudioClip[] waterClips;
@@ -38,6 +39,8 @@ public class Cauldron : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent<Ingredient>(out Ingredient ing))
+            return;
+        if (fireplace && !fireplace.isFireplaceIgnited())
             return;
 
         Destroy(other.gameObject);

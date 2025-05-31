@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: b42b5266f7c69dc4cae35617e5907853
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sparksPrefab: {fileID: 8123263048646515043, guid: 6d3bf378a7080e746bd6ed04f7607666, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
