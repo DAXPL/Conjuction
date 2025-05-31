@@ -274,6 +274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d99464c8e424eb6eb444f1106784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  piecesOnCut: 2
+  piecesOnCutMaterial:
+  - {fileID: 2100000, guid: 7e842ea83ff7a624989e1c219e75d322, type: 2}
+  - {fileID: 2100000, guid: 004860874ed0ec043910a04337ebc21f, type: 2}
+  requiredHitCount: 3
   ingredientName: Mushrooms
 --- !u!65 &2176509394955902428
 BoxCollider:
