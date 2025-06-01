@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6223990569417426619}
   - component: {fileID: 4742377365716675412}
   - component: {fileID: 6098075054636340933}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Berries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
