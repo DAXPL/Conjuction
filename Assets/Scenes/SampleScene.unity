@@ -1203,7 +1203,7 @@ PrefabInstance:
     - target: {fileID: 4218395306670038819, guid: 9d466dce8ff2f174b8eaebf807450a9b, type: 3}
       propertyPath: m_LastSelectExited.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2122315589}
+      objectReference: {fileID: 0}
     - target: {fileID: 4218395306670038819, guid: 9d466dce8ff2f174b8eaebf807450a9b, type: 3}
       propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1211,7 +1211,7 @@ PrefabInstance:
     - target: {fileID: 4218395306670038819, guid: 9d466dce8ff2f174b8eaebf807450a9b, type: 3}
       propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2122315589}
+      objectReference: {fileID: 0}
     - target: {fileID: 4218395306670038819, guid: 9d466dce8ff2f174b8eaebf807450a9b, type: 3}
       propertyPath: m_LastSelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1866,11 +1866,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &2122315589 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 2599525109330935666, guid: 9d466dce8ff2f174b8eaebf807450a9b, type: 3}
-  m_PrefabInstance: {fileID: 875392607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2123850522 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7311498236833533747, guid: 39440a8c4a5987447851dfcc847ba5b8, type: 3}
@@ -2374,6 +2369,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2879458265196461810, guid: 1cb79aeaaff513344b3e5e49232e71f5, type: 3}
+      propertyPath: m_PlanePrefab
+      value: 
+      objectReference: {fileID: 5982963534685165758, guid: 1c2a79d96e1f592489bad12ad85e808c, type: 3}
     - target: {fileID: 4018086918579956433, guid: 1cb79aeaaff513344b3e5e49232e71f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2417,6 +2416,10 @@ PrefabInstance:
     - target: {fileID: 4271426509975583540, guid: 1cb79aeaaff513344b3e5e49232e71f5, type: 3}
       propertyPath: m_Name
       value: MR Setup
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056823610874985710, guid: 1cb79aeaaff513344b3e5e49232e71f5, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
