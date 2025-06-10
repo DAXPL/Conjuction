@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6044376299624718774}
   - component: {fileID: 6015339872886815980}
   - component: {fileID: 6005045106464129116}
+  - component: {fileID: 8547855544315603078}
   m_Layer: 10
   m_Name: ARPlane 1
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d180956a54db4646a1c6342921672ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackingStateVisibilityThreshold: 0
+  m_TrackingStateVisibilityThreshold: 1
   m_HideSubsumed: 1
 --- !u!64 &6044376299624718774
 MeshCollider:
@@ -118,8 +119,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a7a2cb41a0a7c7a43be0303fd69270d4, type: 2}
-  - {fileID: 2100000, guid: 73e83e3f712213f4cb1b628209c57cb6, type: 2}
-  - {fileID: 2100000, guid: 39d8794c59e30e5419f4eb018c60e4e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,3 +140,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8547855544315603078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982963534685165758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4694583967bd9483f9841409d278f46f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FeatheringWidth: 0.2
