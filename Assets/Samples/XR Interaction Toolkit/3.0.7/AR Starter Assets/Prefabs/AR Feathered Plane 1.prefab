@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 114973852414686920}
   - component: {fileID: 114999847245811208}
   - component: {fileID: 6082034917998997483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AR Feathered Plane 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585201990951412}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d180956a54db4646a1c6342921672ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackingStateVisibilityThreshold: 1
+  m_TrackingStateVisibilityThreshold: 0
   m_HideSubsumed: 1
 --- !u!114 &6082034917998997483
 MonoBehaviour:
