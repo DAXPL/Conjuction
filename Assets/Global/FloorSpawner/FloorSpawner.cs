@@ -11,6 +11,7 @@ public class FloorSpawner : MonoBehaviour
     [SerializeField] private int bursts = 20;
     [SerializeField] private int burst = 1;
     [SerializeField] private GameObject[] prefabs;
+    [SerializeField] private GameObject[] staticObjects;
     private Collider areaCollider;
     [SerializeField] private LayerMask layerMask;
 
@@ -22,11 +23,22 @@ public class FloorSpawner : MonoBehaviour
 
     private IEnumerator StartingCorountine()
     {
+        yield return null;
+        for (int i = 0; i < staticObjects.Length; i++)
+        {
+            staticObjects[i].SetActive(false);
+        }
+        
         yield return new WaitForSeconds(1f);
-        for(int i = 0; i < bursts; i++)
+        for (int i = 0; i < bursts; i++)
         {
             SpawnInRange(burst);
             yield return new WaitForSeconds(0.5f);
+        }
+        yield return null;
+        for (int i=0; i < staticObjects.Length; i++)
+        {
+            staticObjects[i].SetActive(true);
         }
     }
     public void SpawnInRange(int number)
