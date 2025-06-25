@@ -33,7 +33,7 @@ public class FloorSpawner : MonoBehaviour
         for (int i = 0; i < bursts; i++)
         {
             SpawnInRange(burst);
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
         }
         yield return null;
         for (int i=0; i < staticObjects.Length; i++)
