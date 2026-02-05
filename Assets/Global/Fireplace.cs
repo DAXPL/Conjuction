@@ -4,10 +4,7 @@ public class Fireplace : MonoBehaviour
 {
     [SerializeField] private GameObject firePrefab;
 
-    private void Start()
-    {
-        if(firePrefab) firePrefab.SetActive(false);
-    }
+
 
     public void MakeFire()
     {
