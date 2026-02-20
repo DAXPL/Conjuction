@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,15 +6,24 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+[Serializable]
+public class Potion {
+    public Vector3 potionColor;
+    public bool isPotionGlowing;
+    public bool isSteaming;
+    public int potionEffect;
+}
+
 public class Cauldron : MonoBehaviour
 {
     [SerializeField] private List<RecipePart> recipe = new();
-    [SerializeField] private BoxCollider cauldronWater;
-    [SerializeField] private UnityEvent onIngredientAdded;
+    [SerializeField] private UnityEvent<Potion> onIngredientAdded;
     [SerializeField] private UnityEvent onRecipeComplete;
     [SerializeField] private UnityEvent onWrongIngredientAdded;
     [SerializeField] private UnityEvent onGoodIngredientAdded;
     [SerializeField] private Fireplace fireplace;
+    [SerializeField] private ParticleSystem potionEffects;
+    [SerializeField] private Potion potion;
     private List<RecipePart> startRecipe = new();
     private bool boiled = false;
     [SerializeField] private AudioClip[] waterClips;
@@ -44,23 +54,25 @@ public class Cauldron : MonoBehaviour
             return;
 
         Destroy(other.gameObject);
-        onIngredientAdded.Invoke();
+        //onIngredientAdded.Invoke();
         audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
-        if (recipe[0].ingredientName != ing.ingredientName) {
-            onWrongIngredientAdded?.Invoke();
-            StartCoroutine(RestartRecipe());
-
-            if (badIngredientAddedClips.Length == 0)
-                return;
-
-            int randomClipIndex = UnityEngine.Random.Range(0, badIngredientAddedClips.Length);
-            audioSource.PlayOneShot(badIngredientAddedClips[randomClipIndex]);
-            return;
-        }
-
-        recipe[0].amount--;
+        Debug.Log("Ingredient added!");
+        UpdatePotionStats(ing);
+        // if (recipe[0].ingredientName != ing.ingredientName) {
+        //     onWrongIngredientAdded?.Invoke();
+        //     StartCoroutine(RestartRecipe());
+        //
+        //     if (badIngredientAddedClips.Length == 0)
+        //         return;
+        //
+        //     int randomClipIndex = UnityEngine.Random.Range(0, badIngredientAddedClips.Length);
+        //     audioSource.PlayOneShot(badIngredientAddedClips[randomClipIndex]);
+        //     return;
+        // }
+        //
+        // recipe[0].amount--;
 
         onGoodIngredientAdded?.Invoke();
         if (!boiled && IsComplete()) {
@@ -69,8 +81,26 @@ public class Cauldron : MonoBehaviour
             Debug.Log("Recipe complete!");
         }
 
-        UpdateRecipe();
+        // UpdateRecipe();
     }
+
+    private void UpdatePotionStats(Ingredient ing) {
+        potion.isPotionGlowing = ing.GetIsGlowing();
+        potion.isSteaming = ing.GetIsSteaming();
+        ClampColor(ing);
+        //potion.potionEffect = ing.GetPotionEffect();
+        onIngredientAdded.Invoke(potion);
+    }
+
+    private void ClampColor(Ingredient ing) {
+        potion.potionColor += ing.GetPotionColor();
+        potion.potionColor.x %= 360;
+        potion.potionColor.y %= 100;
+        potion.potionColor.z %= 100;
+        potion.potionColor.y = Mathf.Clamp(potion.potionColor.y, 30f, 100f);
+        potion.potionColor.z = Mathf.Clamp(potion.potionColor.z, 30f, 100f);
+    }
+    
     private void UpdateRecipe()
     {
         SetIngredientAmountText(0);
@@ -84,14 +114,14 @@ public class Cauldron : MonoBehaviour
             recipe[i].text.SetText($"{recipe[i].amount}");
     }
 
-    private IEnumerator RestartRecipe() {
-        cauldronWater.enabled = true;
-
-        yield return new WaitForSeconds(3);
-
-        recipe = startRecipe;
-        cauldronWater.enabled = false;
-    }
+    // private IEnumerator RestartRecipe() {
+    //     cauldronWater.enabled = true;
+    //
+    //     yield return new WaitForSeconds(3);
+    //
+    //     recipe = startRecipe;
+    //     cauldronWater.enabled = false;
+    // }
 
     private bool IsComplete()
     {
