@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 [Serializable]
 public class Potion {
     public Vector3 potionColor;
-    public bool isPotionGlowing;
+    public float glowingIntensity;
     public bool isSteaming;
     public int potionEffect;
 }
@@ -85,7 +85,7 @@ public class Cauldron : MonoBehaviour
     }
 
     private void UpdatePotionStats(Ingredient ing) {
-        potion.isPotionGlowing = ing.GetIsGlowing();
+        potion.glowingIntensity = ing.GetGlowingIntensity();
         potion.isSteaming = ing.GetIsSteaming();
         ClampColor(ing);
         //potion.potionEffect = ing.GetPotionEffect();
@@ -101,13 +101,13 @@ public class Cauldron : MonoBehaviour
         potion.potionColor.z = Mathf.Clamp(potion.potionColor.z, 30f, 100f);
     }
     
-    private void UpdateRecipe()
-    {
-        SetIngredientAmountText(0);
-
-        if (recipe[0].amount == 0)
-            recipe.RemoveAt(0);
-    }
+    // private void UpdateRecipe()
+    // {
+    //     SetIngredientAmountText(0);
+    //
+    //     if (recipe[0].amount == 0)
+    //         recipe.RemoveAt(0);
+    // }
 
     private void SetIngredientAmountText(int i) {
         if (recipe[i].text)

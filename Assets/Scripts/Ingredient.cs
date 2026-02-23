@@ -3,7 +3,7 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour {
     [Header("For potion properties")]
     [SerializeField] private Vector3 potionColor;
-    [SerializeField] private bool isGlowing;
+    [SerializeField] private float glowingIntensity;
     [SerializeField] private bool isSteaming;
     [SerializeField, Range(0, 4)] private int potionEffect;
     
@@ -14,7 +14,7 @@ public class Ingredient : MonoBehaviour {
     public string ingredientName;
     
     public Vector3 GetPotionColor() => potionColor;
-    public bool GetIsGlowing() => isGlowing;
+    public float GetGlowingIntensity() => glowingIntensity;
     public bool GetIsSteaming() => isSteaming;
     public int GetPotionEffect() => potionEffect;
     public int GetPiecesOnCut() => piecesOnCut;

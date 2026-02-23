@@ -2,28 +2,24 @@ using System.Collections;
 using UnityEngine;
 
 public class CauldronEffects : MonoBehaviour {
-    [SerializeField] private BoxCollider cauldronWater;
-
-    public void WrongIngredientEffect(GameObject water) {
-        StartCoroutine(ChangeWaterColor(water));
-    }
+    [SerializeField] private MeshRenderer cauldronWater;
 
     public void UpdateCauldronWater(Potion potion) {
-        if (!cauldronWater.TryGetComponent(out MeshRenderer mR))
-            Debug.LogError("No mesh renderer");
-
-        mR.materials[0].color = Color.HSVToRGB(potion.potionColor.x / 360f, potion.potionColor.y / 100f, potion.potionColor.z / 100f);
+        SetColor(potion.potionColor);
+        SetGlowingIntensity(potion.glowingIntensity);
     }
 
-    private static IEnumerator ChangeWaterColor(GameObject water) {
-        if (!water.TryGetComponent(out MeshRenderer mR))
-            yield return null;
+    private void SetColor(Vector3 color) {
+        cauldronWater.materials[0].color = 
+            Color.HSVToRGB(
+                color.x / 360f, 
+                color.y / 100f, 
+                color.z / 100f
+            );
+    }
 
-        var startingColor = mR.materials[0].color;
-
-        mR.materials[0].color = Color.red;
-        yield return new WaitForSeconds(2);
-        mR.materials[0].color = startingColor;
-
+    private void SetGlowingIntensity(float emissionStrength) {
+        cauldronWater.materials[0].SetColor("_EmissionColor", cauldronWater.materials[0].color * emissionStrength);
+        cauldronWater.materials[0].EnableKeyword("_EMISSION");
     }
 }

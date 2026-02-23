@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potionColor: {x: 20, y: 10, z: 5}
-  isGlowing: 1
+  glowingIntensity: 0.6
   isSteaming: 1
   potionEffect: 4
   piecesOnCut: 2
