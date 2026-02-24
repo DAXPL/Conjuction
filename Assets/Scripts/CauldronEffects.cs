@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class CauldronEffects : MonoBehaviour {
     [SerializeField] private MeshRenderer cauldronWater;
+    [SerializeField] private ParticleSystem steamParticles;
 
     public void UpdateCauldronWater(Potion potion) {
         SetColor(potion.potionColor);
         SetGlowingIntensity(potion.glowingIntensity);
+        ToggleIsSteaming(potion.isSteaming);
     }
 
     private void SetColor(Vector3 color) {
@@ -21,5 +23,14 @@ public class CauldronEffects : MonoBehaviour {
     private void SetGlowingIntensity(float emissionStrength) {
         cauldronWater.materials[0].SetColor("_EmissionColor", cauldronWater.materials[0].color * emissionStrength);
         cauldronWater.materials[0].EnableKeyword("_EMISSION");
+    }
+    
+    private void ToggleIsSteaming(bool isSteaming) {
+        if (!isSteaming) {
+            steamParticles.Stop();
+            return;
+        }
+
+        steamParticles.Play();
     }
 }
