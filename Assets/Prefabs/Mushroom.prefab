@@ -288,7 +288,8 @@ MonoBehaviour:
   potionColor: {x: 20, y: 10, z: 5}
   glowingIntensity: 0.6
   isSteaming: 1
-  potionEffect: 4
+  potionEffect: 1
+  potionEffect2: 0000000000000000
   piecesOnCut: 2
   piecesOnCutMaterial:
   - {fileID: 2100000, guid: 7e842ea83ff7a624989e1c219e75d322, type: 2}

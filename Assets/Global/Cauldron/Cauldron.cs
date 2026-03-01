@@ -11,7 +11,7 @@ public class Potion {
     public Vector3 potionColor;
     public float glowingIntensity;
     public bool isSteaming;
-    public int potionEffect;
+    public PotionEffect potionEffect;
 }
 
 public class Cauldron : MonoBehaviour
@@ -88,7 +88,7 @@ public class Cauldron : MonoBehaviour
         potion.glowingIntensity = ing.GetGlowingIntensity();
         potion.isSteaming = ing.GetIsSteaming();
         ClampColor(ing);
-        //potion.potionEffect = ing.GetPotionEffect();
+        potion.potionEffect = ing.GetPotionEffect();
         onIngredientAdded.Invoke(potion);
     }
 

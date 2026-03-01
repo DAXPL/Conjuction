@@ -1,14 +1,20 @@
-using System.Collections;
 using UnityEngine;
 
 public class CauldronEffects : MonoBehaviour {
     [SerializeField] private MeshRenderer cauldronWater;
     [SerializeField] private ParticleSystem steamParticles;
+    
+    [Header("Special effects particles")]
+    [SerializeField] private ParticleSystem sparkles;
+    [SerializeField] private ParticleSystem fire;
+    [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private ParticleSystem lighting;
 
     public void UpdateCauldronWater(Potion potion) {
         SetColor(potion.potionColor);
         SetGlowingIntensity(potion.glowingIntensity);
         ToggleIsSteaming(potion.isSteaming);
+        EnableEffects(potion.potionEffect);
     }
 
     private void SetColor(Vector3 color) {
@@ -32,5 +38,19 @@ public class CauldronEffects : MonoBehaviour {
         }
 
         steamParticles.Play();
+    }
+
+    private void EnableEffects(PotionEffect potionEffects) {
+        if ((potionEffects & PotionEffect.Sparkles) != 0)
+            sparkles.Play();
+
+        if ((potionEffects & PotionEffect.Fire) != 0)
+            fire.Play();
+
+        if ((potionEffects & PotionEffect.Explosion) != 0)
+            explosion.Play();
+
+        if ((potionEffects & PotionEffect.Lighting) != 0)
+            lighting.Play();
     }
 }

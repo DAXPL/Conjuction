@@ -1,12 +1,19 @@
 using UnityEngine;
 
+[System.Flags]
+public enum PotionEffect {
+    Sparkles = 1,
+    Fire = 2,
+    Explosion = 4,
+    Lighting = 8,
+}
+
 public class Ingredient : MonoBehaviour {
     [Header("For potion properties")]
     [SerializeField] private Vector3 potionColor;
     [SerializeField] private float glowingIntensity;
     [SerializeField] private bool isSteaming;
-    [SerializeField, Range(0, 4)] private int potionEffect;
-    
+    [SerializeField] private PotionEffect potionEffect; 
     [SerializeField] private int piecesOnCut = 2;
     [SerializeField] private Material[] piecesOnCutMaterial;
     [SerializeField] private int requiredHitCount = 3;
@@ -16,7 +23,7 @@ public class Ingredient : MonoBehaviour {
     public Vector3 GetPotionColor() => potionColor;
     public float GetGlowingIntensity() => glowingIntensity;
     public bool GetIsSteaming() => isSteaming;
-    public int GetPotionEffect() => potionEffect;
+    public PotionEffect GetPotionEffect() => potionEffect;
     public int GetPiecesOnCut() => piecesOnCut;
     public int GetRequiredHitCount() => requiredHitCount;
     public int GetHitCount() => hitCount;
