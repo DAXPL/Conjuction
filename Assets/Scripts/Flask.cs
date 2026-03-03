@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CauldronEffects : MonoBehaviour{
-    [SerializeField] private MeshRenderer cauldronWater;
+public class Flask : MonoBehaviour {
+    [SerializeField] private MeshRenderer potionWater;
     [SerializeField] private ParticleSystem steamParticles;
     
     [Header("Special effects particles")]
@@ -10,10 +10,10 @@ public class CauldronEffects : MonoBehaviour{
     [SerializeField] private ParticleSystem fire;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private ParticleSystem lighting;
-    
-    public void UpdateCauldronWater(Potion potion) {
+
+    public void CollectPotion(Potion potion) {
         LiquidBaseProperties _ = new(
-            cauldronWater, 
+            potionWater, 
             potion, 
             EnableEffects(potion.potionEffect), 
             steamParticles

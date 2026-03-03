@@ -48,6 +48,11 @@ public class Cauldron : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.TryGetComponent(out Flask flask)) {
+            flask.CollectPotion(potion);
+            return;
+        }
+
         if (!other.TryGetComponent<Ingredient>(out Ingredient ing))
             return;
         if (fireplace && !fireplace.isFireplaceIgnited())
