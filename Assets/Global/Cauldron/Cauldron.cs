@@ -90,15 +90,17 @@ public class Cauldron : MonoBehaviour
     }
 
     private void UpdatePotionStats(Ingredient ing) {
-        potion.glowingIntensity = ing.GetGlowingIntensity();
-        potion.isSteaming = ing.GetIsSteaming();
-        ClampColor(ing);
-        potion.potionEffect = ing.GetPotionEffect();
+        Potion potionTemp = ing.GetPotionProperties();
+        
+        potion.glowingIntensity = potionTemp.glowingIntensity;
+        potion.isSteaming = potionTemp.isSteaming;
+        ClampColor(potionTemp.potionColor);
+        potion.potionEffect = potionTemp.potionEffect;
         onIngredientAdded.Invoke(potion);
     }
 
-    private void ClampColor(Ingredient ing) {
-        potion.potionColor += ing.GetPotionColor();
+    private void ClampColor(Vector3 potionColor) {
+        potion.potionColor += potionColor;
         potion.potionColor.x %= 360;
         potion.potionColor.y %= 100;
         potion.potionColor.z %= 100;

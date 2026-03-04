@@ -285,11 +285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d99464c8e424eb6eb444f1106784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potionColor: {x: 20, y: 10, z: 5}
-  glowingIntensity: 0.6
-  isSteaming: 1
-  potionEffect: 1
-  potionEffect2: 0000000000000000
+  potionProperties:
+    potionColor: {x: 20, y: 50, z: 10}
+    glowingIntensity: 1
+    isSteaming: 1
+    potionEffect: 1
   piecesOnCut: 2
   piecesOnCutMaterial:
   - {fileID: 2100000, guid: 7e842ea83ff7a624989e1c219e75d322, type: 2}

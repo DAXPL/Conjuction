@@ -9,21 +9,14 @@ public enum PotionEffect {
 }
 
 public class Ingredient : MonoBehaviour {
-    [Header("For potion properties")]
-    [SerializeField] private Vector3 potionColor;
-    [SerializeField] private float glowingIntensity;
-    [SerializeField] private bool isSteaming;
-    [SerializeField] private PotionEffect potionEffect; 
+    [SerializeField] private Potion potionProperties;
     [SerializeField] private int piecesOnCut = 2;
     [SerializeField] private Material[] piecesOnCutMaterial;
     [SerializeField] private int requiredHitCount = 3;
     private int hitCount = 0;
     public string ingredientName;
     
-    public Vector3 GetPotionColor() => potionColor;
-    public float GetGlowingIntensity() => glowingIntensity;
-    public bool GetIsSteaming() => isSteaming;
-    public PotionEffect GetPotionEffect() => potionEffect;
+    public Potion GetPotionProperties() => potionProperties;
     public int GetPiecesOnCut() => piecesOnCut;
     public int GetRequiredHitCount() => requiredHitCount;
     public int GetHitCount() => hitCount;
