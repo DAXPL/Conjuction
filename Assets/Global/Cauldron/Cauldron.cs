@@ -6,14 +6,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-[Serializable]
-public class Potion {
-    public Vector3 potionColor;
-    public float glowingIntensity;
-    public bool isSteaming;
-    public PotionEffect potionEffect;
-}
-
 public class Cauldron : MonoBehaviour
 {
     [SerializeField] private List<RecipePart> recipe = new();
@@ -22,14 +14,18 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private UnityEvent onWrongIngredientAdded;
     [SerializeField] private UnityEvent onGoodIngredientAdded;
     [SerializeField] private Fireplace fireplace;
-    [SerializeField] private ParticleSystem potionEffects;
-    [SerializeField] private Potion potion;
-    private List<RecipePart> startRecipe = new();
-    private bool boiled = false;
+    [SerializeField] private Potion perfectPotion;
     [SerializeField] private AudioClip[] waterClips;
     [SerializeField] private AudioClip[] badIngredientAddedClips;
+    private Potion potion;
 
     private AudioSource audioSource;
+
+    private void OnValidate() {
+        perfectPotion.potionColor.x = Mathf.Clamp(perfectPotion.potionColor.x, 0f, 360f);
+        perfectPotion.potionColor.y = Mathf.Clamp(perfectPotion.potionColor.y, 30f, 100f);
+        perfectPotion.potionColor.z = Mathf.Clamp(perfectPotion.potionColor.z, 30f, 100f);
+    }
 
     private void Awake()
     {
@@ -41,15 +37,12 @@ public class Cauldron : MonoBehaviour
         {
             SetIngredientAmountText(i);
         }
-
-        startRecipe = recipe;
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Flask flask)) {
-            flask.CollectPotion(potion);
+            flask.CollectPotion(potion, perfectPotion);
             return;
         }
 
@@ -59,34 +52,12 @@ public class Cauldron : MonoBehaviour
             return;
 
         Destroy(other.gameObject);
-        //onIngredientAdded.Invoke();
         audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
         Debug.Log("Ingredient added!");
         UpdatePotionStats(ing);
-        // if (recipe[0].ingredientName != ing.ingredientName) {
-        //     onWrongIngredientAdded?.Invoke();
-        //     StartCoroutine(RestartRecipe());
-        //
-        //     if (badIngredientAddedClips.Length == 0)
-        //         return;
-        //
-        //     int randomClipIndex = UnityEngine.Random.Range(0, badIngredientAddedClips.Length);
-        //     audioSource.PlayOneShot(badIngredientAddedClips[randomClipIndex]);
-        //     return;
-        // }
-        //
-        // recipe[0].amount--;
-
         onGoodIngredientAdded?.Invoke();
-        if (!boiled && IsComplete()) {
-            onRecipeComplete.Invoke();
-            boiled = true;
-            Debug.Log("Recipe complete!");
-        }
-
-        // UpdateRecipe();
     }
 
     private void UpdatePotionStats(Ingredient ing) {
@@ -108,27 +79,10 @@ public class Cauldron : MonoBehaviour
         potion.potionColor.z = Mathf.Clamp(potion.potionColor.z, 30f, 100f);
     }
     
-    // private void UpdateRecipe()
-    // {
-    //     SetIngredientAmountText(0);
-    //
-    //     if (recipe[0].amount == 0)
-    //         recipe.RemoveAt(0);
-    // }
-
     private void SetIngredientAmountText(int i) {
         if (recipe[i].text)
             recipe[i].text.SetText($"{recipe[i].amount}");
     }
-
-    // private IEnumerator RestartRecipe() {
-    //     cauldronWater.enabled = true;
-    //
-    //     yield return new WaitForSeconds(3);
-    //
-    //     recipe = startRecipe;
-    //     cauldronWater.enabled = false;
-    // }
 
     private bool IsComplete()
     {
@@ -146,10 +100,19 @@ public class Cauldron : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 }
+
 [System.Serializable]
 public class RecipePart
 {
     public string ingredientName;
     public int amount;
     public TextMeshPro text;
+}
+
+[Serializable]
+public class Potion {
+    public Vector3 potionColor;
+    public float glowingIntensity;
+    public bool isSteaming;
+    public PotionEffect potionEffect;
 }

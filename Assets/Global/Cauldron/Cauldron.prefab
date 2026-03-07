@@ -5423,6 +5423,11 @@ MonoBehaviour:
     glowingIntensity: 0
     isSteaming: 0
     potionEffect: 0
+  perfectPotion:
+    potionColor: {x: 0, y: 0, z: 0}
+    glowingIntensity: 0
+    isSteaming: 0
+    potionEffect: 0
   waterClips:
   - {fileID: 8300000, guid: 5fb880e2eaeeec14ba05d0719968d924, type: 3}
   - {fileID: 8300000, guid: ab3c6c7d764b72d42b8f0a422ee64cca, type: 3}
@@ -5446,10 +5451,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cauldronWater: {fileID: 397819952995953232}
   steamParticles: {fileID: 2467150857503655837}
-  sparkles: {fileID: 0}
-  fire: {fileID: 0}
-  explosion: {fileID: 0}
-  lighting: {fileID: 0}
+  sparkles: {fileID: 6088498321048389913}
+  fire: {fileID: 4726121812998160973}
+  explosion: {fileID: 8353315913045621870}
+  lighting: {fileID: 5510318898528518792}
 --- !u!1 &6699046427292883232
 GameObject:
   m_ObjectHideFlags: 0
@@ -20344,6 +20349,26 @@ PrefabInstance:
 --- !u!198 &2467150857503655837 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2660516408004094911, guid: a6c178cc5f274374892db5100f613f3e, type: 3}
+  m_PrefabInstance: {fileID: 491201535269727266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4726121812998160973 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5136240536886963823, guid: a6c178cc5f274374892db5100f613f3e, type: 3}
+  m_PrefabInstance: {fileID: 491201535269727266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5510318898528518792 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5379986151472557738, guid: a6c178cc5f274374892db5100f613f3e, type: 3}
+  m_PrefabInstance: {fileID: 491201535269727266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6088498321048389913 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5958167505930691899, guid: a6c178cc5f274374892db5100f613f3e, type: 3}
+  m_PrefabInstance: {fileID: 491201535269727266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8353315913045621870 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8448165354577023052, guid: a6c178cc5f274374892db5100f613f3e, type: 3}
   m_PrefabInstance: {fileID: 491201535269727266}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8368396639502361646 stripped

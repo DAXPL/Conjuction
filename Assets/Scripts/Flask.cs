@@ -10,14 +10,47 @@ public class Flask : MonoBehaviour {
     [SerializeField] private ParticleSystem fire;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private ParticleSystem lighting;
-
-    public void CollectPotion(Potion potion) {
+    private Potion currentPotion;
+    private Potion perfectPotion;
+    
+    public void CollectPotion(Potion potion, Potion perfectPotion) {
         LiquidBaseProperties _ = new(
             potionWater, 
             potion, 
             EnableEffects(potion.potionEffect), 
             steamParticles
         );
+        
+        this.perfectPotion = perfectPotion; 
+        currentPotion = potion;
+    }
+    private int perfectScore = 0;
+
+    [ContextMenu("Drink")]
+    public void Drink() {
+        if (currentPotion.isSteaming == perfectPotion.isSteaming) 
+            perfectScore++;
+
+        if (Mathf.Approximately(
+                currentPotion.glowingIntensity, 
+                perfectPotion.glowingIntensity)
+           ) {
+            perfectScore++;
+        }
+
+        if (currentPotion.potionEffect == perfectPotion.potionEffect) 
+            perfectScore++;
+
+        if (Vector3.Distance(
+                currentPotion.potionColor,
+                perfectPotion.potionColor
+            ) < 20f) {
+            perfectScore++;
+        }
+
+        Debug.Log("The potion is " + (perfectScore/4) * 100 + "% perfect!");
+        currentPotion = null;
+        // TODO: Add empty the potion flask
     }
     
     private ParticleSystem[] EnableEffects(PotionEffect potionEffects) {
