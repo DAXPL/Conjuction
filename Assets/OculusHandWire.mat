@@ -7,27 +7,25 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "li\u015Bcie"
-  m_Shader: {fileID: 4800000, guid: e1b734cb95fa288408401d3b5c6167db, type: 3}
+  m_Name: OculusHandWire
+  m_Shader: {fileID: 4800000, guid: b895d3431e75dc345a72e171f82bfbea, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_InvalidKeywords:
+  - _COLORGRADIENT_ON
+  - _FRESNEL_ON
+  - _KEYWORD0_ON
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - MOTIONVECTORS
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -48,7 +46,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FingerGlowMask:
+        m_Texture: {fileID: 2800000, guid: 67be4f15fa1af0c4486fedbfeb87774c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlowMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -64,85 +74,80 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
+    - _TextureSample0:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1.71, y: 0.93}
         m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
+    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_2021dfd9117e49f19612a2f0db9853ec: 0.02
-    - Vector1_9724d9df45ad4d09b15f4f316db658e1: 0
-    - Vector1_c1494b2bfca04a3c9a12b4813fd0d7cd: 0.05
-    - _AddPrecomputedVelocity: 0
-    - _AlphaClip: 0
-    - _AlphaToMask: 0
-    - _Blend: 0
-    - _BlendModePreserveSpecular: 1
+    - _Alpha: 1
     - _BumpScale: 1
-    - _ClearCoatMask: 0
-    - _ClearCoatSmoothness: 0
-    - _Cull: 2
+    - _ColorGradient: 1
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _DstBlendAlpha: 0
-    - _EnvironmentDepthBias: 0
-    - _EnvironmentReflections: 1
+    - _EnableConfidence: 0
+    - _Fresnel: 1
+    - _FresnelOpacity: 0
+    - _FresnelOpacityPower: 3.66
+    - _FresnelPower: 0
+    - _GenerateGlow: 0
+    - _GlobalOpacity: 0.714
     - _GlossMapScale: 1
     - _Glossiness: 0.5
-    - _GlossinessSource: 0
     - _GlossyReflections: 1
+    - _IndexGlowValue: 0
     - _Metallic: 0
+    - _MiddleGlowValue: 0
     - _Mode: 0
+    - _OcclusionEnabled: 0
     - _OcclusionStrength: 1
+    - _Opacity: 0
+    - _OutlineFresnelOpacity: 0
+    - _OutlineFresnelPower: 2.462451
+    - _OutlineGlowIntensity: 1
+    - _OutlineGradient: 0
+    - _OutlineIntensity: 1
+    - _OutlineOpacity: 1
+    - _OutlinePinchRange: 0.15
+    - _OutlineSphereHardness: 0.15
+    - _OutlineWidth: 0
     - _Parallax: 0.02
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _ReceiveShadows: 1
-    - _Shininess: 0
-    - _Smoothness: 0.5
-    - _SmoothnessSource: 0
+    - _PinchIntensity: 0
+    - _PinchRange: 0.03
+    - _PinkyGlowValue: 0
+    - _RingGlowValue: 0
     - _SmoothnessTextureChannel: 0
-    - _SpecSource: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SrcBlendAlpha: 1
-    - _Surface: 0
+    - _TextureOpacity: 1
+    - _ThumbGlowValue: 0
     - _UVSec: 0
-    - _WorkflowMode: 1
-    - _XRMotionVectorsPass: 1
+    - _UseTexture: 0
+    - _WristFade: 0
+    - _WristRange: 0.06
     - _ZWrite: 1
+    - __dirty: 0
     m_Colors:
-    - Color_0f9f01caaa22451eb0a5baace1e4638d: {r: 0, g: 0.5660378, b: 0.037203692, a: 1}
-    - _BaseColor: {r: 0.20266213, g: 0.5943396, b: 0.18222678, a: 1}
-    - _Color: {r: 0.20266208, g: 0.5943396, b: 0.18222675, a: 1}
+    - _Color: {r: 1, g: 0.44811308, b: 0.44811308, a: 1}
+    - _ColorBottom: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0}
+    - _ColorPrimary: {r: 1, g: 0.4481132, b: 0.4481132, a: 1}
+    - _ColorSecondary: {r: 1, g: 0.8443396, b: 0.8443396, a: 1}
+    - _ColorTop: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _FingerGlowColor: {r: 0.39716092, g: 0.990566, b: 0.990566, a: 1}
+    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColorBottom: {r: 0, g: 0.19427729, b: 1, a: 1}
+    - _OutlineColorTop: {r: 1, g: 0, b: 0, a: 1}
+    - _OutlineGlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineJointColor: {r: 1, g: 0, b: 0, a: 1}
+    - _PinchColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PinchPosition: {r: 0, g: 0, b: 0, a: 0}
+    - _WristPosition: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &9210766209691786794
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 10
