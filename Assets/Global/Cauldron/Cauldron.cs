@@ -17,8 +17,7 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private Potion perfectPotion;
     [SerializeField] private AudioClip[] waterClips;
     [SerializeField] private AudioClip[] badIngredientAddedClips;
-    private Potion potion;
-
+    private Potion potion = new();
     private AudioSource audioSource;
 
     private void OnValidate() {
@@ -46,8 +45,9 @@ public class Cauldron : MonoBehaviour
             return;
         }
 
-        if (!other.TryGetComponent<Ingredient>(out Ingredient ing))
+        if (!other.TryGetComponent(out Ingredient ing))
             return;
+        
         if (fireplace && !fireplace.isFireplaceIgnited())
             return;
 
@@ -56,12 +56,12 @@ public class Cauldron : MonoBehaviour
         audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
         Debug.Log("Ingredient added!");
-        UpdatePotionStats(ing);
+        UpdatePotionStats(ing.GetIngredientData());
         onGoodIngredientAdded?.Invoke();
     }
 
-    private void UpdatePotionStats(Ingredient ing) {
-        Potion potionTemp = ing.GetPotionProperties();
+    private void UpdatePotionStats(IngredientData ing) {
+        Potion potionTemp = ing.GetCurrentIngredientProperties();
         
         potion.glowingIntensity = potionTemp.glowingIntensity;
         potion.isSteaming = potionTemp.isSteaming;
@@ -70,11 +70,18 @@ public class Cauldron : MonoBehaviour
         onIngredientAdded.Invoke(potion);
     }
 
+    
+    // TODO: Add comments
     private void ClampColor(Vector3 potionColor) {
         potion.potionColor += potionColor;
+        
+        // Clamp color to Vector3 X to 0-360
         potion.potionColor.x %= 360;
+        
+        // Clamp color to Vector3 Y,Z to 100
         potion.potionColor.y %= 100;
         potion.potionColor.z %= 100;
+        
         potion.potionColor.y = Mathf.Clamp(potion.potionColor.y, 30f, 100f);
         potion.potionColor.z = Mathf.Clamp(potion.potionColor.z, 30f, 100f);
     }

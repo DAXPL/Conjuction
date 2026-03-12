@@ -285,17 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d99464c8e424eb6eb444f1106784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potionProperties:
-    potionColor: {x: 20, y: 50, z: 10}
-    glowingIntensity: 1
-    isSteaming: 1
-    potionEffect: 1
-  piecesOnCut: 2
-  piecesOnCutMaterial:
-  - {fileID: 2100000, guid: 7e842ea83ff7a624989e1c219e75d322, type: 2}
-  - {fileID: 2100000, guid: 004860874ed0ec043910a04337ebc21f, type: 2}
-  requiredHitCount: 3
-  ingredientName: Mushrooms
+  ingredientData: {fileID: 11400000, guid: 7a79a1077da71494b885a71bf27beadf, type: 2}
 --- !u!65 &2176509394955902428
 BoxCollider:
   m_ObjectHideFlags: 0

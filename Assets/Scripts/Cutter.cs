@@ -22,22 +22,22 @@ public class Cutter : MonoBehaviour {
         if (!collision.gameObject.TryGetComponent(out Ingredient i))
             return;
 
-        if (i.GetPiecesOnCut() == 0)
+        if (i.GetIngredientData().GetPiecesOnCut() == 0)
             return;
 
-        i.IncreaseHitCount();
+        i.GetIngredientData().IncreaseHitCount();
         if (cutSound.Length != 0)
             PlaySound(cutSound);
 
-        if (i.GetHitCount() != i.GetRequiredHitCount())
+        if (i.GetIngredientData().GetHitCount() != i.GetIngredientData().GetRequiredHitCount())
             return;
 
-        CreateCutPieces(i.GetPiecesOnCut(), i);
+        CreateCutPieces(i.GetIngredientData().GetPiecesOnCut(), i);
         Destroy(collision.gameObject);
     }
 
     private void CreateCutPieces(int piecesOnCut, Ingredient ingredient) {
-        var materials = ingredient.GetPiecesOnCutMaterial();
+        var materials = ingredient.GetIngredientData().GetPiecesOnCutMaterial();
         var spawnPos = ingredient.transform.localPosition;
 
         for (int i = 0; i < piecesOnCut; i++) {
@@ -50,7 +50,7 @@ public class Cutter : MonoBehaviour {
             GameObject piece = Instantiate(cutPiecePrefab, spawnPos + (cutPiecesSpawnOffset * i), Quaternion.identity);
 
             if (piece.TryGetComponent(out Ingredient cutIngredient))
-                cutIngredient.ingredientName = ingredient.ingredientName;
+                cutIngredient.GetIngredientData().ingredientName = ingredient.GetIngredientData().ingredientName;
 
             if (!piece.TryGetComponent(out Renderer r))
                 return;
@@ -64,7 +64,7 @@ public class Cutter : MonoBehaviour {
                     break;
 
                 default:
-                    if (materials.Length != ingredient.GetPiecesOnCut()) {
+                    if (materials.Length != ingredient.GetIngredientData().GetPiecesOnCut()) {
                         materialIndex = Random.Range(0, materials.Length);
                         break;
                     }

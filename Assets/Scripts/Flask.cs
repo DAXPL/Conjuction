@@ -12,6 +12,7 @@ public class Flask : MonoBehaviour {
     [SerializeField] private ParticleSystem lighting;
     private Potion currentPotion;
     private Potion perfectPotion;
+    //private int perfectScore = 0;
     
     public void CollectPotion(Potion potion, Potion perfectPotion) {
         LiquidBaseProperties _ = new(
@@ -24,32 +25,34 @@ public class Flask : MonoBehaviour {
         this.perfectPotion = perfectPotion; 
         currentPotion = potion;
     }
-    private int perfectScore = 0;
+    
 
     [ContextMenu("Drink")]
     public void Drink() {
-        if (currentPotion.isSteaming == perfectPotion.isSteaming) 
-            perfectScore++;
-
-        if (Mathf.Approximately(
-                currentPotion.glowingIntensity, 
-                perfectPotion.glowingIntensity)
-           ) {
-            perfectScore++;
-        }
-
-        if (currentPotion.potionEffect == perfectPotion.potionEffect) 
-            perfectScore++;
-
-        if (Vector3.Distance(
-                currentPotion.potionColor,
-                perfectPotion.potionColor
-            ) < 20f) {
-            perfectScore++;
-        }
-
-        Debug.Log("The potion is " + (perfectScore/4) * 100 + "% perfect!");
-        currentPotion = null;
+        
+        
+        // if (currentPotion.isSteaming == perfectPotion.isSteaming) 
+        //     perfectScore++;
+        //
+        // if (Mathf.Approximately(
+        //         currentPotion.glowingIntensity, 
+        //         perfectPotion.glowingIntensity)
+        //    ) {
+        //     perfectScore++;
+        // }
+        //
+        // if (currentPotion.potionEffect == perfectPotion.potionEffect) 
+        //     perfectScore++;
+        //
+        // if (Vector3.Distance(
+        //         currentPotion.potionColor,
+        //         perfectPotion.potionColor
+        //     ) < 20f) {
+        //     perfectScore++;
+        // }
+        //
+        // Debug.Log("The potion is " + (perfectScore/4) * 100 + "% perfect!");
+        // currentPotion = null;
         // TODO: Add empty the potion flask
     }
     

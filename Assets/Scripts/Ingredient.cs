@@ -8,18 +8,23 @@ public enum PotionEffect {
     Lighting = 8,
 }
 
+// TODO: Add IngredientData ScriptableObject that will contain
+//  all the data of the ingredients. And also different states of the ingredient
 public class Ingredient : MonoBehaviour {
-    [SerializeField] private Potion potionProperties;
-    [SerializeField] private int piecesOnCut = 2;
-    [SerializeField] private Material[] piecesOnCutMaterial;
-    [SerializeField] private int requiredHitCount = 3;
-    private int hitCount = 0;
-    public string ingredientName;
+    [SerializeField] private IngredientData ingredientData;
     
-    public Potion GetPotionProperties() => potionProperties;
-    public int GetPiecesOnCut() => piecesOnCut;
-    public int GetRequiredHitCount() => requiredHitCount;
-    public int GetHitCount() => hitCount;
-    public void IncreaseHitCount() => hitCount++;
-    public Material[] GetPiecesOnCutMaterial() => piecesOnCutMaterial;
+    public IngredientData GetIngredientData() => ingredientData;
+    // [SerializeField] private Potion potionProperties;
+    // [SerializeField] private int piecesOnCut = 2;
+    // [SerializeField] private Material[] piecesOnCutMaterial;
+    // [SerializeField] private int requiredHitCount = 3;
+    // private int hitCount = 0;
+    // public string ingredientName;
+    //
+    // public Potion GetPotionProperties() => potionProperties;
+    // public int GetPiecesOnCut() => piecesOnCut;
+    // public int GetRequiredHitCount() => requiredHitCount;
+    // public int GetHitCount() => hitCount;
+    // public void IncreaseHitCount() => hitCount++;
+    // public Material[] GetPiecesOnCutMaterial() => piecesOnCutMaterial;
 }
