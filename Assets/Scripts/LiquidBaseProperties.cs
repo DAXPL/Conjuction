@@ -14,10 +14,18 @@ public class LiquidBaseProperties {
         this.specialEffectToEnable = specialEffectToEnable;
         this.liquidMeshRenderer = liquidMeshRenderer;
         this.steamParticles = steamParticles;
-        UpdateCauldronWater(potion);
+        UpdateWater(potion);
+    }
+
+    public void RemovePotionFromWater(MeshRenderer liquidMeshRenderer, Color baseColor) {
+        this.liquidMeshRenderer = liquidMeshRenderer;
+        liquidMeshRenderer.material.color = baseColor;
+        SetGlowingIntensity(0);
+        ToggleIsSteaming(false);
+        DisableEffects();
     }
     
-    private void UpdateCauldronWater(Potion potion) {
+    private void UpdateWater(Potion potion) {
         SetColor(potion.potionColor);
         SetGlowingIntensity(potion.glowingIntensity);
         ToggleIsSteaming(potion.isSteaming);
@@ -54,6 +62,12 @@ public class LiquidBaseProperties {
     private void EnableEffects(PotionEffect potionEffects) {
         foreach (var particle in specialEffectToEnable) {
             particle.Play();
+        }
+    }
+    
+    private void DisableEffects() {
+        foreach (var particle in specialEffectToEnable) {
+            particle.Stop();
         }
     }
 }

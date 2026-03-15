@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,14 +11,24 @@ public class CauldronEffects : MonoBehaviour{
     [SerializeField] private ParticleSystem fire;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private ParticleSystem lighting;
-    
+    private Color startWaterColor;
+    private LiquidBaseProperties potionInCauldron;
+
+    private void Start() {
+        startWaterColor = cauldronWater.material.color;
+    }
+
     public void UpdateCauldronWater(Potion potion) {
-        LiquidBaseProperties _ = new(
+        potionInCauldron = new(
             cauldronWater, 
             potion, 
             EnableEffects(potion.potionEffect), 
             steamParticles
         );
+    }
+    
+    public void RemoveCauldronWater() {
+        potionInCauldron.RemovePotionFromWater(cauldronWater, startWaterColor);
     }
     
     private ParticleSystem[] EnableEffects(PotionEffect potionEffects) {

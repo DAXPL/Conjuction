@@ -1,6 +1,7 @@
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+[SelectionBase]
 public class Flask : MonoBehaviour {
     [SerializeField] private MeshRenderer potionWater;
     [SerializeField] private ParticleSystem steamParticles;
@@ -10,24 +11,35 @@ public class Flask : MonoBehaviour {
     [SerializeField] private ParticleSystem fire;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private ParticleSystem lighting;
-    private Potion currentPotion;
-    private Potion perfectPotion;
+    private IngredientData[] currentPotion;
+    private IngredientData[] perfectPotion;
+    private LiquidBaseProperties potionInFlask;
     
-    public void CollectPotion(Potion potion, Potion perfectPotion) {
-        LiquidBaseProperties _ = new(
+    public void CollectPotion(Potion potion, IngredientData[] currentPotion, IngredientData[] perfectPotion) {
+        potionInFlask = new(
             potionWater, 
             potion, 
-            PotionUtils.GetActiveEffects(potion.potionEffect, sparkles, fire, explosion, lighting), 
+            PotionUtils.GetActiveEffects(
+                potion.potionEffect, sparkles, fire, explosion, lighting
+            ), 
             steamParticles
         );
         
         this.perfectPotion = perfectPotion; 
-        currentPotion = potion;
+        this.currentPotion = currentPotion;
     }
     
 
     [ContextMenu("Drink")]
     public void Drink() {
-        // TODO: Add empty the potion flask
+        if (perfectPotion.SequenceEqual(currentPotion)) {
+            Debug.Log("You have perfect potion!");
+        }
+        
+        Color emptyWaterColor = new Color(0, 0, 0, 0);
+
+        potionInFlask.RemovePotionFromWater(potionWater, emptyWaterColor);
+        currentPotion = null;
+        potionInFlask = null;
     }
 }

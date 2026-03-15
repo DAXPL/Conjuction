@@ -14,20 +14,18 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private UnityEvent onWrongIngredientAdded;
     [SerializeField] private UnityEvent onGoodIngredientAdded;
     [SerializeField] private Fireplace fireplace;
-    [SerializeField] private Potion perfectPotion;
+    [SerializeField] private IngredientData[] perfectPotionIngredients;
     [SerializeField] private AudioClip[] waterClips;
     [SerializeField] private AudioClip[] badIngredientAddedClips;
-    private Potion potion = new();
+    private Potion potion;
+    private List<IngredientData> currentPotionIngredients = new();
     private AudioSource audioSource;
+    private CauldronEffects cauldronEffects;
 
-    private void OnValidate() {
-        perfectPotion.potionColor.x = Mathf.Clamp(perfectPotion.potionColor.x, 0f, 360f);
-        perfectPotion.potionColor.y = Mathf.Clamp(perfectPotion.potionColor.y, 30f, 100f);
-        perfectPotion.potionColor.z = Mathf.Clamp(perfectPotion.potionColor.z, 30f, 100f);
-    }
 
     private void Awake()
     {
+        cauldronEffects = GetComponent<CauldronEffects>();
         audioSource = GetComponent<AudioSource>();
     }
     private void Start()
@@ -41,7 +39,13 @@ public class Cauldron : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Flask flask)) {
-            flask.CollectPotion(potion, perfectPotion);
+            if (potion == null)
+                return;
+            
+            flask.CollectPotion(potion, currentPotionIngredients.ToArray(), perfectPotionIngredients);
+            cauldronEffects.RemoveCauldronWater();
+            potion = null;
+            currentPotionIngredients.Clear();
             return;
         }
 
@@ -56,6 +60,7 @@ public class Cauldron : MonoBehaviour
         audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
         Debug.Log("Ingredient added!");
+        currentPotionIngredients.Add(ing.GetIngredientData());
         UpdatePotionStats(ing);
         onGoodIngredientAdded?.Invoke();
     }
@@ -63,7 +68,8 @@ public class Cauldron : MonoBehaviour
     private void UpdatePotionStats(Ingredient ing) {
         Potion potionTemp = ing.GetIngredientData().GetIngredientProperties();
         float colorMultiplier = ing.GetColorMultiplier();
-        
+
+        potion = new ();
         potion.glowingIntensity = potionTemp.glowingIntensity;
         potion.isSteaming = potionTemp.isSteaming;
         ClampColor(potionTemp.potionColor * colorMultiplier);
