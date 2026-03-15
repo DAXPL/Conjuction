@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Cauldron : MonoBehaviour
 {
+    [Header("Recipe Settings")]
     [SerializeField] private List<RecipePart> recipe = new();
     [SerializeField] private UnityEvent<Potion> onIngredientAdded;
     [SerializeField] private UnityEvent onRecipeComplete;
@@ -15,8 +16,11 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private UnityEvent onGoodIngredientAdded;
     [SerializeField] private Fireplace fireplace;
     [SerializeField] private IngredientData[] perfectPotionIngredients;
+
+    [Header("Audio Settings")]
     [SerializeField] private AudioClip[] waterClips;
     [SerializeField] private AudioClip[] badIngredientAddedClips;
+
     private Potion potion;
     private List<IngredientData> currentPotionIngredients = new();
     private AudioSource audioSource;
@@ -35,7 +39,8 @@ public class Cauldron : MonoBehaviour
             SetIngredientAmountText(i);
         }
     }
-
+    
+    // Triggers when a Flask or Ingredient enters the cauldron
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Flask flask)) {
@@ -64,7 +69,8 @@ public class Cauldron : MonoBehaviour
         UpdatePotionStats(ing);
         onGoodIngredientAdded?.Invoke();
     }
-
+    
+    // Updates the current potion's stats based on the added ingredient.
     private void UpdatePotionStats(Ingredient ing) {
         Potion potionTemp = ing.GetIngredientData().GetIngredientProperties();
         float colorMultiplier = ing.GetColorMultiplier();
@@ -78,7 +84,7 @@ public class Cauldron : MonoBehaviour
     }
 
     
-    // TODO: Add comments
+    // Updates the potion's color and clamps its components.
     private void ClampColor(Vector3 potionColor) {
         potion.potionColor += potionColor;
         
@@ -109,6 +115,7 @@ public class Cauldron : MonoBehaviour
         }
         return true;
     }
+    
     public void Restart()
     {
         SceneManager.LoadScene(0);

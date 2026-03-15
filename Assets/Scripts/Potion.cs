@@ -18,13 +18,16 @@ public enum IngredientState {
 
 [Serializable]
 public class Potion {
-    public Vector3 potionColor;
-    public float glowingIntensity;
     public bool isSteaming;
     public PotionEffect potionEffect;
+    [Tooltip("Color in HSV (Color: 0-360, Saturation: 30-100, Value: 30-100)")] 
+    public Vector3 potionColor; 
+    public float glowingIntensity;
 }
 
 public static class PotionUtils {
+    
+    // Collects active particle systems based on potion effects flags.
     public static ParticleSystem[] GetActiveEffects(
         PotionEffect effects,
         ParticleSystem sparkles,

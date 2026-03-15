@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CauldronEffects : MonoBehaviour{
-    [SerializeField] private MeshRenderer cauldronWater;
     [SerializeField] private ParticleSystem steamParticles;
+    [SerializeField] private MeshRenderer cauldronWater;
     
     [Header("Special effects particles")]
     [SerializeField] private ParticleSystem sparkles;
     [SerializeField] private ParticleSystem fire;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private ParticleSystem lighting;
-    private Color startWaterColor;
     private LiquidBaseProperties potionInCauldron;
+    private Color startWaterColor;
 
     private void Start() {
         startWaterColor = cauldronWater.material.color;
     }
 
+    // Updates the cauldron water visual properties
     public void UpdateCauldronWater(Potion potion) {
         potionInCauldron = new(
             cauldronWater, 
@@ -27,6 +28,7 @@ public class CauldronEffects : MonoBehaviour{
         );
     }
     
+    // Resets the cauldron liquid to its original state
     public void RemoveCauldronWater() {
         potionInCauldron.RemovePotionFromWater(cauldronWater, startWaterColor);
     }

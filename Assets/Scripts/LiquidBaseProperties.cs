@@ -5,6 +5,7 @@ public class LiquidBaseProperties {
     private ParticleSystem[] specialEffectToEnable;
     private ParticleSystem steamParticles;
         
+    // Initializes the liquid properties and updates its visual state.
     public LiquidBaseProperties(
         MeshRenderer liquidMeshRenderer, 
         Potion potion, 
@@ -17,6 +18,7 @@ public class LiquidBaseProperties {
         UpdateWater(potion);
     }
 
+    // Resets the container liquid properties.
     public void RemovePotionFromWater(MeshRenderer liquidMeshRenderer, Color baseColor) {
         this.liquidMeshRenderer = liquidMeshRenderer;
         liquidMeshRenderer.material.color = baseColor;
@@ -25,6 +27,7 @@ public class LiquidBaseProperties {
         DisableEffects();
     }
     
+    // Updates liquid color, emission, steam, and effects.
     private void UpdateWater(Potion potion) {
         SetColor(potion.potionColor);
         SetGlowingIntensity(potion.glowingIntensity);

@@ -3,8 +3,8 @@ using UnityEngine;
 
 [SelectionBase]
 public class Flask : MonoBehaviour {
-    [SerializeField] private MeshRenderer potionWater;
     [SerializeField] private ParticleSystem steamParticles;
+    [SerializeField] private MeshRenderer potionWater;
     
     [Header("Special effects particles")]
     [SerializeField] private ParticleSystem sparkles;
@@ -15,6 +15,7 @@ public class Flask : MonoBehaviour {
     private IngredientData[] perfectPotion;
     private LiquidBaseProperties potionInFlask;
     
+    // Transfers the potion from the cauldron to the flask.
     public void CollectPotion(Potion potion, IngredientData[] currentPotion, IngredientData[] perfectPotion) {
         potionInFlask = new(
             potionWater, 
@@ -31,6 +32,7 @@ public class Flask : MonoBehaviour {
     
 
     [ContextMenu("Drink")]
+    // Consumes the potion and checks if it matches the perfect recipe.
     public void Drink() {
         if (perfectPotion.SequenceEqual(currentPotion)) {
             Debug.Log("You have perfect potion!");

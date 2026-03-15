@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour {
     [SerializeField] private IngredientData ingredientData;
-    [SerializeField] private int piecesOnCut = 2;
-    [SerializeField] private Material[] piecesOnCutMaterial;
-    [SerializeField] private int requiredHitCount = 3;
-    [SerializeField] private float colorMultiplier;
-    [SerializeField] private IngredientState ingredientState = IngredientState.Whole;
     private int hitCount = 0;
+    [SerializeField, Tooltip("Pieces it splits into when cut")] private int piecesOnCut = 2;
+    [SerializeField] private Material[] piecesOnCutMaterial;
+    [SerializeField, Tooltip("Hits required for cutting/crushing")] private int requiredHitCount = 3;
+    [SerializeField, Tooltip("Multiplier for potion color")] private float colorMultiplier;
+    [SerializeField] private IngredientState ingredientState = IngredientState.Whole; 
 
+    // Calculates color multiplier based on state (Whole, Cut, or Crushed).
     public float GetColorMultiplier() {
         switch (ingredientState) {
             case IngredientState.Whole:
