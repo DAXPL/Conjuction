@@ -109,18 +109,10 @@ public class Cauldron : MonoBehaviour
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class RecipePart
 {
     public string ingredientName;
     public int amount;
     public TextMeshPro text;
-}
-
-[Serializable]
-public class Potion {
-    public Vector3 potionColor;
-    public float glowingIntensity;
-    public bool isSteaming;
-    public PotionEffect potionEffect;
 }

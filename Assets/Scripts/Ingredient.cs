@@ -1,19 +1,5 @@
 using UnityEngine;
 
-[System.Flags]
-public enum PotionEffect {
-    Sparkles = 1,
-    Fire = 2,
-    Explosion = 4,
-    Lighting = 8,
-}
-
-public enum IngredientState {
-    Whole,
-    Cut,
-    Crushed
-}
-
 public class Ingredient : MonoBehaviour {
     [SerializeField] private IngredientData ingredientData;
     [SerializeField] private int piecesOnCut = 2;
