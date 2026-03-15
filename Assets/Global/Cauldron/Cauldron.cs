@@ -43,38 +43,49 @@ public class Cauldron : MonoBehaviour
     // Triggers when a Flask or Ingredient enters the cauldron
     private void OnTriggerEnter(Collider other)
     {
+        // Check if the object entering the trigger is a Flask
         if (other.TryGetComponent(out Flask flask)) {
+            // If there's no potion made yet, do nothing
             if (potion == null)
                 return;
             
+            // Transfer the potion and ingredient data to the flask
             flask.CollectPotion(potion, currentPotionIngredients.ToArray(), perfectPotionIngredients);
+
             cauldronEffects.RemoveCauldronWater();
             potion = null;
             currentPotionIngredients.Clear();
             return;
         }
 
+        // Check if the object entering the trigger is an Ingredient
         if (!other.TryGetComponent(out Ingredient ing))
             return;
         
         if (fireplace && !fireplace.isFireplaceIgnited())
             return;
-
+        
         Destroy(other.gameObject);
         audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
         Debug.Log("Ingredient added!");
+        
+        // Save the added ingredient
         currentPotionIngredients.Add(ing.GetIngredientData());
+        
+        // Update the resulting potion's stats
         UpdatePotionStats(ing);
         onGoodIngredientAdded?.Invoke();
     }
     
     // Updates the current potion's stats based on the added ingredient.
     private void UpdatePotionStats(Ingredient ing) {
+        // Retrieve properties from the ingredient
         Potion potionTemp = ing.GetIngredientData().GetIngredientProperties();
         float colorMultiplier = ing.GetColorMultiplier();
 
+        // Initialize a new potion and copy visual properties
         potion = new ();
         potion.glowingIntensity = potionTemp.glowingIntensity;
         potion.isSteaming = potionTemp.isSteaming;
