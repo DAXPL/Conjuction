@@ -8,23 +8,41 @@ public enum PotionEffect {
     Lighting = 8,
 }
 
-// TODO: Add IngredientData ScriptableObject that will contain
-//  all the data of the ingredients. And also different states of the ingredient
+public enum IngredientState {
+    Whole,
+    Cut,
+    Crushed
+}
+
 public class Ingredient : MonoBehaviour {
     [SerializeField] private IngredientData ingredientData;
-    
+    [SerializeField] private int piecesOnCut = 2;
+    [SerializeField] private Material[] piecesOnCutMaterial;
+    [SerializeField] private int requiredHitCount = 3;
+    [SerializeField] private float colorMultiplier;
+    [SerializeField] private IngredientState ingredientState = IngredientState.Whole;
+    private int hitCount = 0;
+
+    public float GetColorMultiplier() {
+        switch (ingredientState) {
+            case IngredientState.Whole:
+                return 1;
+            
+            case IngredientState.Cut:
+                return colorMultiplier;
+            
+            case IngredientState.Crushed:
+                return colorMultiplier * 1.2f;
+            
+            default:
+                return 1;
+        }
+    }
+    public int GetHitCount() => hitCount;
+    public int GetPiecesOnCut() => piecesOnCut;
+    public int GetRequiredHitCount() => requiredHitCount;
+    public Material[] GetPiecesOnCutMaterial() => piecesOnCutMaterial;
+    public IngredientState GetIngredientState() => ingredientState;
     public IngredientData GetIngredientData() => ingredientData;
-    // [SerializeField] private Potion potionProperties;
-    // [SerializeField] private int piecesOnCut = 2;
-    // [SerializeField] private Material[] piecesOnCutMaterial;
-    // [SerializeField] private int requiredHitCount = 3;
-    // private int hitCount = 0;
-    // public string ingredientName;
-    //
-    // public Potion GetPotionProperties() => potionProperties;
-    // public int GetPiecesOnCut() => piecesOnCut;
-    // public int GetRequiredHitCount() => requiredHitCount;
-    // public int GetHitCount() => hitCount;
-    // public void IncreaseHitCount() => hitCount++;
-    // public Material[] GetPiecesOnCutMaterial() => piecesOnCutMaterial;
+    public void IncreaseHitCount() => hitCount++;
 }

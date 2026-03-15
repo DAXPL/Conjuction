@@ -56,16 +56,17 @@ public class Cauldron : MonoBehaviour
         audioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length)]);
 
         Debug.Log("Ingredient added!");
-        UpdatePotionStats(ing.GetIngredientData());
+        UpdatePotionStats(ing);
         onGoodIngredientAdded?.Invoke();
     }
 
-    private void UpdatePotionStats(IngredientData ing) {
-        Potion potionTemp = ing.GetCurrentIngredientProperties();
+    private void UpdatePotionStats(Ingredient ing) {
+        Potion potionTemp = ing.GetIngredientData().GetIngredientProperties();
+        float colorMultiplier = ing.GetColorMultiplier();
         
         potion.glowingIntensity = potionTemp.glowingIntensity;
         potion.isSteaming = potionTemp.isSteaming;
-        ClampColor(potionTemp.potionColor);
+        ClampColor(potionTemp.potionColor * colorMultiplier);
         potion.potionEffect = potionTemp.potionEffect;
         onIngredientAdded.Invoke(potion);
     }
