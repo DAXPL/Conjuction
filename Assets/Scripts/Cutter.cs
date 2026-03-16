@@ -50,7 +50,7 @@ public class Cutter : MonoBehaviour {
             GameObject piece = Instantiate(cutPiecePrefab, spawnPos + (cutPiecesSpawnOffset * i), Quaternion.identity);
 
             if (piece.TryGetComponent(out Ingredient cutIngredient))
-                cutIngredient.ingredientName = ingredient.ingredientName;
+                cutIngredient.GetIngredientData().ingredientName = ingredient.GetIngredientData().ingredientName;
 
             if (!piece.TryGetComponent(out Renderer r))
                 return;

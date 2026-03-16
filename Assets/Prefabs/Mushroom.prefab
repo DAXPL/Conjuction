@@ -110,10 +110,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037371245832904848}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 0.1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -216,6 +216,8 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
+  m_AutoFindParentInteractableInHierarchy: 0
+  m_ParentInteractableObject: {fileID: 0}
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -225,6 +227,7 @@ MonoBehaviour:
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -266,6 +269,10 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
+  m_LimitLinearVelocity: 0
+  m_LimitAngularVelocity: 0
+  m_MaxLinearVelocityDelta: 10
+  m_MaxAngularVelocityDelta: 20
 --- !u!114 &8002826664810729662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,12 +285,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d99464c8e424eb6eb444f1106784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientData: {fileID: 11400000, guid: 7a79a1077da71494b885a71bf27beadf, type: 2}
   piecesOnCut: 2
-  piecesOnCutMaterial:
-  - {fileID: 2100000, guid: 7e842ea83ff7a624989e1c219e75d322, type: 2}
-  - {fileID: 2100000, guid: 004860874ed0ec043910a04337ebc21f, type: 2}
+  piecesOnCutMaterial: []
   requiredHitCount: 3
-  ingredientName: Mushrooms
+  potionEffect: 1
+  colorMultiplier: 1.3
+  ingredientState: 0
 --- !u!65 &2176509394955902428
 BoxCollider:
   m_ObjectHideFlags: 0
