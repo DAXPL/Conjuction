@@ -16,5 +16,5 @@ MonoBehaviour:
   ingredientProperties:
     isSteaming: 0
     potionEffect: 0
-    potionColor: {x: 0, y: 40, z: 80}
-    glowingIntensity: 0
+    potionColor: {x: 0, y: 60, z: 70}
+    glowingIntensity: 0.1
