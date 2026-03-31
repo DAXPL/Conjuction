@@ -239,12 +239,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319d99464c8e424eb6eb444f1106784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientData: {fileID: 0}
+  ingredientData: {fileID: 11400000, guid: ac5a0c4cc56c553478a1a5cdce5c051e, type: 2}
   piecesOnCut: 2
   piecesOnCutMaterial:
   - {fileID: 2100000, guid: 96e88c163ed016f47976d5a6ae1d170c, type: 2}
   requiredHitCount: 3
-  colorMultiplier: 0
+  colorMultiplier: 1
   ingredientState: 0
 --- !u!1 &6960559410618705449
 GameObject:

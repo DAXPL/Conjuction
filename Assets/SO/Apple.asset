@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba855643e0aeb3c4bbb8ecf007d33868, type: 3}
-  m_Name: Mushroom
+  m_Name: Apple
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
-  ingredientName: Mushroom
+  ingredientName: Apple
   ingredientProperties:
     isSteaming: 0
-    potionEffect: 4
-    potionColor: {x: 20, y: 40, z: 70}
+    potionEffect: 0
+    potionColor: {x: 0, y: 40, z: 80}
     glowingIntensity: 0

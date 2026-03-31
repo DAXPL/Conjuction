@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba855643e0aeb3c4bbb8ecf007d33868, type: 3}
-  m_Name: Mushroom
+  m_Name: Pistachio
   m_EditorClassIdentifier: Assembly-CSharp::IngredientData
-  ingredientName: Mushroom
+  ingredientName: Pistachio
   ingredientProperties:
     isSteaming: 0
-    potionEffect: 4
-    potionColor: {x: 20, y: 40, z: 70}
+    potionEffect: 1
+    potionColor: {x: 120, y: 10, z: 90}
     glowingIntensity: 0
