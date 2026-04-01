@@ -5,11 +5,36 @@ TagManager:
   serializedVersion: 3
   tags:
   - Steel
+  - QDSUISection
+  - QDSUIAccentColor
+  - QDSUISecondaryButton
+  - QDSUIPrimaryButton
+  - QDSUITextSecondaryInvertedColor
+  - QDSUITextInvertedColor
+  - QDSUIToggleButton
+  - QDSUIIcon
+  - QDSUITextSecondaryColor
+  - QDSUIDestructiveButton
+  - QDSUISharedThemeColor
+  - QDSUIBorderlessButton
+  - QDSUIToggleBorderlessButton
+  - QDSUIBackplateGradient
+  - QDSUITooltip
+  - QDSUIBackplate
+  - QDSUIToggleSwitch
+  - Locomotion
+  - LocoButton
+  - LocoText
+  - PassThroughButton
+  - PassThrough
+  - QDSUITextInputField
+  - SamplesInfoPanel
+  - QDSUIToggleCheckboxRadio
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Overlay UI
   - Water
   - UI
   - Spawner Contact
@@ -17,7 +42,7 @@ TagManager:
   - IgnoreArrow
   - Arrow
   - SpawnGround
-  - 
+  - Debug
   - 
   - 
   - 
