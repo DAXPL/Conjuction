@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7499845650051171888}
   - component: {fileID: 969732538139548847}
   - component: {fileID: -8016904469988310330}
+  - component: {fileID: 2651781022415670665}
   m_Layer: 0
   m_Name: Berries
   m_TagString: Untagged
@@ -252,6 +253,18 @@ MonoBehaviour:
   _throwWhenUnselected: 1
   _forceKinematicDisabled: 1
 --- !u!114 &-8016904469988310330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749744394034995905}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cb0a0cb13965347b765a3a9356dd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Oculus.Interaction::Oculus.Interaction.InteractableTriggerBroadcaster
+--- !u!114 &2651781022415670665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
