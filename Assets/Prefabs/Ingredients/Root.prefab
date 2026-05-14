@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8281099648666992280}
   - component: {fileID: -6478582992100964972}
   - component: {fileID: 8058100458513116154}
+  - component: {fileID: 4686489550287969983}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -194,6 +195,18 @@ MonoBehaviour:
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
   _forceKinematicDisabled: 1
+--- !u!114 &4686489550287969983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671458125537003773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944c1bc00dd2ff142aa66d11ab8025f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityPhysic
 --- !u!1 &6960559410618705449
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +234,7 @@ Transform:
   m_GameObject: {fileID: 6960559410618705449}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0172, y: -0.0855, z: -0.0011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

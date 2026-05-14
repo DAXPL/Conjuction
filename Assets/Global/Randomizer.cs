@@ -12,14 +12,14 @@ public class Randomizer : MonoBehaviour
             int id = Random.Range(0, objects.Length);
             for (int i = 0; i < objects.Length; i++)
             {
-                objects[i].SetActive(i == id);
+                if(objects[i])objects[i].SetActive(i == id);
             }
         }
         else
         {
             for (int i = 0; i < objects.Length; i++)
             {
-                objects[i].SetActive(Random.Range(0, 10) <= exclusiveChance);
+                if (objects[i]) objects[i].SetActive(Random.Range(0, 10) <= exclusiveChance);
             }
         }
     }

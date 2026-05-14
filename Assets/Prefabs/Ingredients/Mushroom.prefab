@@ -98,6 +98,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9c2eb1cca2808444bbe1c26137ff5ae, type: 3}
       insertIndex: -1
       addedObject: {fileID: -237686349175149710}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9c2eb1cca2808444bbe1c26137ff5ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6243777162084094765}
   m_SourcePrefab: {fileID: 100100000, guid: f9c2eb1cca2808444bbe1c26137ff5ae, type: 3}
 --- !u!4 &1661233384259025450 stripped
 Transform:
@@ -285,6 +288,18 @@ MonoBehaviour:
   _kinematicWhileSelected: 1
   _throwWhenUnselected: 1
   _forceKinematicDisabled: 1
+--- !u!114 &-6243777162084094765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037371245832904848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944c1bc00dd2ff142aa66d11ab8025f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityPhysic
 --- !u!1001 &7879322062067019716
 PrefabInstance:
   m_ObjectHideFlags: 0
