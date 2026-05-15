@@ -1343,10 +1343,10 @@ MonoBehaviour:
   _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
-  quest2MinDynamicResolutionScale: 0.7
-  quest2MaxDynamicResolutionScale: 0.9
-  quest3MinDynamicResolutionScale: 0.7
-  quest3MaxDynamicResolutionScale: 0.9
+  quest2MinDynamicResolutionScale: 0.5
+  quest2MaxDynamicResolutionScale: 0.7
+  quest3MinDynamicResolutionScale: 0.6
+  quest3MaxDynamicResolutionScale: 0.8
   minRenderScale: 0.7
   maxRenderScale: 1
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
