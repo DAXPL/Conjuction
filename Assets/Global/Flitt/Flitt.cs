@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 
 public class Flitt : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Flitt : MonoBehaviour
     [SerializeField] private AudioClip[] clips;
     private AudioSource audioSource;
     private float chirpsTime = 0;
+    [SerializeField] private UnityEvent onFed;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -22,6 +24,20 @@ public class Flitt : MonoBehaviour
             audioSource.pitch = Random.Range(0.9f, 1.2f);
             audioSource.PlayOneShot(clips[Random.Range(0,clips.Length)]);
             chirpsTime = Time.time + Random.Range(60f, 240f);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.TryGetComponent(out Rigidbody rb) && rb.isKinematic == false)
+        {
+            if(collision.gameObject.TryGetComponent(out Ingredient ingredient))
+            {
+                audioSource.pitch = Random.Range(0.9f, 1.2f);
+                audioSource.PlayOneShot(clips[Random.Range(0,clips.Length)]);
+                chirpsTime = Time.time + Random.Range(60f, 240f);
+                Destroy(collision.gameObject);
+                onFed.Invoke();
+            }
         }
     }
 }

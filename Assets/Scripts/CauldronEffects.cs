@@ -19,15 +19,17 @@ public class CauldronEffects : MonoBehaviour{
     }
 
     // Updates the cauldron water visual properties
-    public void UpdateCauldronWater(Potion potion) {
+    public void UpdateCauldronWater(Potion potion)
+    {
         potionInCauldron = new(
-            cauldronWater, 
-            potion, 
-            EnableEffects(potion.potionEffect), 
-            steamParticles
+            cauldronWater,
+            potion,
+            EnableEffects(potion.potionEffect),
+            steamParticles,
+            null
         );
     }
-    
+
     // Resets the cauldron liquid to its original state
     public void RemoveCauldronWater() {
         potionInCauldron.RemovePotionFromWater(cauldronWater, startWaterColor);

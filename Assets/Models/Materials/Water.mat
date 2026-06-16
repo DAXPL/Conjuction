@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water
-  m_Shader: {fileID: 4800000, guid: e1b734cb95fa288408401d3b5c6167db, type: 3}
+  m_Shader: {fileID: 4800000, guid: dcb444cf737154443be726880a059186, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -30,9 +30,9 @@ Material:
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses:
-  - MOTIONVECTORS
+  stringTagMap:
+    RenderType: Opaque
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -134,7 +134,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.053266272, g: 0.46900624, b: 0.5943396, a: 1}
-    - _Color: {r: 0.2028302, g: 0.81514907, b: 1, a: 0.46666667}
+    - _Color: {r: 0.05326625, g: 0.46900624, b: 0.5943396, a: 1}
     - _EmissionColor: {r: 0.07371191, g: 0.6142659, b: 0.78626037, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
